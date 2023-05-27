@@ -31,7 +31,10 @@ def main():
 
     entries = passwords_csv.split("\n")[1:]
 
-    domain = urlparse(args.url).netloc
+    url = args.url
+    domain = urlparse(url).netloc
+    if not domain:
+        return 0
 
     login, pwd = get_password(entries, domain, args.csv_separator)
     if login:
