@@ -4,6 +4,8 @@ import re
 
 def get_password(csv_entries, url_regex, separator):
     for i, entry in enumerate(csv_entries):
+        if not entry:
+            continue
         items = entry.split(separator)
         url = items[0]
         login = items[1]
@@ -33,7 +35,7 @@ def main():
         print(args.output_template % (login, pwd))
         return 0
 
-    return 1
+    return 0
 
 if __name__ == "__main__":
     code = main()
